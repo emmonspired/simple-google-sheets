@@ -1,0 +1,16 @@
+{
+  "name": "simple-google-sheets",
+  "version": "0.1.1",
+  "description": "A utility for handling authentication and retrieval of google sheets data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dan Emmons",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.5",
+    "googleapis": "^40.0.0",
+    "readline-sync": "^1.4.9"
+  }
+}
