@@ -1,6 +1,6 @@
 {
   "name": "simple-google-sheets",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A utility for handling authentication and retrieval of google sheets data.",
   "main": "index.js",
   "scripts": {
@@ -12,5 +12,6 @@
     "bluebird": "^3.5.5",
     "googleapis": "^40.0.0",
     "readline-sync": "^1.4.9"
-  }
+  },
+  "source":"https://github.com/emmonspired/simple-google-sheets"
 }
