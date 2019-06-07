@@ -39,7 +39,7 @@ class SimpleGoogleSheets {
 
         // Check if we have previously stored a token.
         try {
-        token = JSON.parse(fs.readFileSync(this.config.TOKEN_PATH));
+            token = JSON.parse(fs.readFileSync(this.config.TOKEN_PATH));
         } catch (err) {
             const authUrl = oauth2Client.generateAuthUrl({
                 access_type: 'offline', scope: this.config.SCOPES
