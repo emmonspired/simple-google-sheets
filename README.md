@@ -1,6 +1,9 @@
 # simple-google-sheets
 A utility for handling authentication and retrieval of google sheets data.
 
+## Installation
+`npm install simple-google-sheets`
+
 ```
 const {SimpleGoogleSheets} = require('simple-google-sheets');
 
