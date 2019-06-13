@@ -82,35 +82,30 @@ class SimpleGoogleSheets {
             var rows = response.data.values;
             if (rows.length == 0) {
                 console.debug(`No headers and data found: ${JSON.stringify(options)}`);
-                return;
+                return [];
             }
 
-            var headers = rows[0]; // first row is always the header row
+            var headers = rows[0]; // first row is always the header row             
+            var data = rows.splice(1,rows.length); // everything after the first header row is data      
+            var processed = data.reduce((map,row) => {        
 
-            if (rows.length > 1) {      
-                var data = rows.splice(1,rows.length); // everything after the first header row is data      
-                var processed = data.reduce((map,row) => {        
+                var processedRow = {};
 
-                    var processedRow = {};
+                for(var h in headers) {
+                    var header = this.camelize(headers[h]); // Email becomes email, Sales Force becomes salesForce, Purchase Date becomes purchaseDate etc
+                    processedRow[header] = row[h];
+                }
 
-                    for(var h in headers) {
-                        var header = this.camelize(headers[h]); // Email becomes email, Sales Force becomes salesForce, Purchase Date becomes purchaseDate etc
-                        processedRow[header] = row[h];
-                    }
+                map[row[0]] = processedRow; // key the data by the first column value
+                
+                return map;
+            }, {});            
 
-                    map[row[0]] = processedRow; // key the data by the first column value
-                    
-                    return map;
-                }, {});            
-
-                return processed;
-            } else {
-                console.debug(`No data found: ${JSON.stringify(options)}`);
-            }
+            return processed;            
 
         } catch (err) {
             console.log(`The API returned an error: ${err}`)
-            return;
+            return [];
         }
     }
 
