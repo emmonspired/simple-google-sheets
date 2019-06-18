@@ -81,12 +81,14 @@ class SimpleGoogleSheets {
         try{
             var rows = response.data.values;
             if (rows.length == 0) {
-                console.debug(`No headers and data found: ${JSON.stringify(options)}`);
-                return [];
-            }
+                console.info(`No headers and data found: ${JSON.stringify(options)}`);
+                return;
+            }                        
 
-            var headers = rows[0]; // first row is always the header row             
+            var headers = rows[0]; // first row is always the header row            
             var data = rows.splice(1,rows.length); // everything after the first header row is data      
+            console.info(`Rows:${data.length} for sheet:${spreadsheetId} with range:${range}`);
+
             var processed = data.reduce((map,row) => {        
 
                 var processedRow = {};
@@ -104,8 +106,8 @@ class SimpleGoogleSheets {
             return processed;            
 
         } catch (err) {
-            console.log(`The API returned an error: ${err}`)
-            return [];
+            console.error(`The API returned an error: ${err}`)
+            return;
         }
     }
 
