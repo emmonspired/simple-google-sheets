@@ -1,6 +1,6 @@
 {
   "name": "simple-google-sheets",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A utility for handling authentication and retrieval of google sheets data.",
   "main": "index.js",
   "scripts": {
